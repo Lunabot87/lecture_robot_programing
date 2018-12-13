@@ -1,0 +1,350 @@
+<robot
+  name="paduck">
+  <link
+    name="body">
+    <inertial>
+      <origin
+        xyz="-3.7896E-06 -0.024714 0.0003594"
+        rpy="0 0 0" />
+      <mass
+        value="1" />
+      <inertia
+        ixx="5.22"
+        ixy="0.00017117"
+        ixz="0.00013367"
+        iyy="2.3187"
+        iyz="-0.060811"
+        izz="5.2291" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://paduck/meshes/body.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://paduck/meshes/body.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="base">
+    <inertial>
+      <origin
+        xyz="4.2321E-18 1.3316E-19 0.01"
+        rpy="0 0 0" />
+      <mass
+        value="30.238" />
+      <inertia
+        ixx="0.47347"
+        ixy="-1.6543E-32"
+        ixz="1.7569E-17"
+        iyy="0.47347"
+        iyz="6.2781E-18"
+        izz="0.94493" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://paduck/meshes/base.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://paduck/meshes/base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <link
+    name="wheel_1">
+    <inertial>
+      <origin
+        xyz="0 0 -0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.5" />
+      <inertia
+        ixx="5.4727E-06"
+        ixy="0"
+        ixz="1.4902E-22"
+        iyy="5.4727E-06"
+        iyz="2.9528E-23"
+        izz="5.9058E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://paduck/meshes/wheel_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://paduck/meshes/wheel_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <link
+    name="wheel_2">
+    <inertial>
+      <origin
+        xyz="0 0 0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.5" />
+      <inertia
+        ixx="5.4727E-06"
+        ixy="7.3601E-54"
+        ixz="-1.6871E-37"
+        iyy="5.4727E-06"
+        iyz="-1.8261E-38"
+        izz="5.9058E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://paduck/meshes/wheel_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://paduck/meshes/wheel_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <link
+    name="wheel_3">
+    <inertial>
+      <origin
+        xyz="0 0 0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.5" />
+      <inertia
+        ixx="5.4727E-06"
+        ixy="7.3601E-54"
+        ixz="-1.7313E-37"
+        iyy="5.4727E-06"
+        iyz="-1.8261E-38"
+        izz="5.9058E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://paduck/meshes/wheel_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://paduck/meshes/wheel_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <link
+    name="wheel_4">
+    <inertial>
+      <origin
+        xyz="0 0 -0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.5" />
+      <inertia
+        ixx="5.4727E-06"
+        ixy="-7.3601E-54"
+        ixz="2.4047E-37"
+        iyy="5.4727E-06"
+        iyz="-1.8261E-38"
+        izz="5.9058E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://paduck/meshes/wheel_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://paduck/meshes/wheel_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="body_to_base"
+    type="fixed">
+    <origin
+      xyz="0 0 -0.235"
+      rpy="-3.1416 -4.5912E-49 -3.1416" />
+    <parent
+      link="body" />
+    <child
+      link="base" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <joint
+    name="base_to_1"
+    type="continuous">
+    <origin
+      xyz="-0.13 0.11 0.0125"
+      rpy="1.5708 1.3028 7.4983E-33" />
+    <parent
+      link="base" />
+    <child
+      link="wheel_1" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <joint
+    name="base_to_2"
+    type="continuous">
+    <origin
+      xyz="-0.13 -0.11 0.0125"
+      rpy="-1.5708 0 -3.1416" />
+    <parent
+      link="base" />
+    <child
+      link="wheel_2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <joint
+    name="base_to_3"
+    type="continuous">
+    <origin
+      xyz="0.13 -0.11 0.0125"
+      rpy="-1.5708 0 -3.1416" />
+    <parent
+      link="base" />
+    <child
+      link="wheel_3" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <joint
+    name="base_to_4"
+    type="continuous">
+    <origin
+      xyz="0.13 0.11 0.0125"
+      rpy="-1.5708 0 -3.1416" />
+    <parent
+      link="base" />
+    <child
+      link="wheel_4" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <gazebo reference="body">
+	<material>Gazebo/Yellow</material>
+  </gazebo>
+  <gazebo reference="base">
+	<material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo>
+	<plugin name="paduck_control" filename="libgazebo_ros_diff_drive.so">
+		<alwaysOn>true</alwaysOn>
+		<updateRate>20</updateRate>
+		<legacyMode>false</legacyMode>
+		<leftJoint>base_to_1</leftJoint>
+		<rightJoint>base_to_4</rightJoint>
+		<wheelSeparation>0.32</wheelSeparation>
+		<wheelDiameter>0.025</wheelDiameter>
+		<wheelTorque>40</wheelTorque>
+		<wheelAcceleration>1</wheelAcceleration>
+		<commandTopic>paduck/cmd_vel</commandTopic>
+		<odometryTopic>paduck/odom</odometryTopic>
+		<odometryFrame>odom</odometryFrame>
+		<odometrySource>world</odometrySource>
+		<publishOdomTF>true</publishOdomTF>
+		<publishWheelJointState>true</publishWheelJointState>
+		<publishWheelTF>false</publishWheelTF>
+		<publishTf>true</publishTf>
+		<robotBaseFrame>base</robotBaseFrame>
+		<rosDebugLevel>na</rosDebugLevel>
+	</plugin>
+  </gazebo>
+
+  
+</robot>

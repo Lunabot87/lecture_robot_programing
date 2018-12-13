@@ -1,0 +1,365 @@
+<robot
+  name="mobile_d">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0601883771663723 0.0676163347450387 4.75476796432782E-18"
+        rpy="0 0 0" />
+      <mass
+        value="40.5091303517493" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="wheel_connector">
+    <inertial>
+      <origin
+        xyz="-4.1807E-12 0.0017703 -0.00028056"
+        rpy="0 0 0" />
+      <mass
+        value="0.34814" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/wheel_connector.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/wheel_connector.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_wheel_connector"
+    type="fixed">
+    <origin
+      xyz="0.073955 0 -0.013"
+      rpy="1.5708 -6.123E-17 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_connector" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_wheel">
+    <inertial>
+      <origin
+        xyz="-0.015139 6.245E-16 5.6725E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.28504" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/left_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.058824 0 0.83922 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/left_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_lw"
+    type="continuous">
+    <origin
+      xyz="0.073955 -0.148 -0.013"
+      rpy="3.1416 6.123E-17 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_wheel" />
+    <axis
+      xyz="-1 0 0" />
+    <dynamics
+      friction="0.8" />
+  </joint>
+  <link
+    name="right_wheel">
+    <inertial>
+      <origin
+        xyz="0.015139 -4.1633E-17 1.7347E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.28504" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/right_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.058824 0 0.83922 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/right_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_rw"
+    type="continuous">
+    <origin
+      xyz="0.073955 0.148 -0.013"
+      rpy="3.1416 6.123E-17 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_wheel" />
+    <axis
+      xyz="-1 0 0" />
+    <dynamics
+      friction="0.8" />
+  </joint>
+  <link
+    name="caster">
+    <inertial>
+      <origin
+        xyz="0 0.023595 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.52433" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/caster.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/caster.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_caster"
+    type="fixed">
+    <origin
+      xyz="-0.185 0 0"
+      rpy="-1.5708 -3.5431E-18 -1.0846" />
+    <parent
+      link="base_link" />
+    <child
+      link="caster" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="cam">
+    <inertial>
+      <origin
+        xyz="0.0025 -2.7756E-17 -1.6456E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.0023856" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/cam.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/cam.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_cam"
+    type="fixed">
+    <origin
+      xyz="0.2225 0 0.135"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="cam" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="lidar">
+    <inertial>
+      <origin
+        xyz="0.16544 -0.0375 0.15"
+        rpy="0 0 0" />
+      <mass
+        value="0.43971" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/lidar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/lidar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_lidar"
+    type="fixed">
+    <origin
+      xyz="-0.025 -0.15 0.05"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+</robot>
