@@ -144,7 +144,7 @@
     <child
       link="left_wheel" />
     <axis
-      xyz="-1 0 0" />
+      xyz="1 0 0" />
     <dynamics
       friction="0.8" />
   </joint>
@@ -199,7 +199,7 @@
     <child
       link="right_wheel" />
     <axis
-      xyz="-1 0 0" />
+      xyz="1 0 0" />
     <dynamics
       friction="0.8" />
   </joint>
@@ -301,7 +301,7 @@
     type="fixed">
     <origin
       xyz="0.2225 0 0.135"
-      rpy="1.5708 0 0" />
+      rpy="1.5708 0.7854 0" />
     <parent
       link="base_link" />
     <child
@@ -362,4 +362,99 @@
     <axis
       xyz="0 -1 0" />
   </joint>
+
+  <gazebo reference="caster">
+ 		<mu1>0.2</mu1>
+ 		<mu2>0.1</mu2>
+ 		<kp>100000.0</kp>
+ 		<kd>100.0</kd>
+ 		<material>Gazebo/Orange</material>
+ 	</gazebo>
+
+   <gazebo reference="base_link">
+ 		<kp>1000000.0</kp>
+ 		<kd>100.0</kd>
+ 		<material>Gazebo/Red</material>
+ 	</gazebo>
+
+
+ 	<gazebo reference="left_wheel">
+ 		<mu1>0.8</mu1>
+ 		<mu2>0.7</mu2>
+ 		<kp>500000.0</kp>
+ 		<kd>10000.0</kd>
+ 		<material>Gazebo/Black</material>
+ 	 	</gazebo>
+
+ 	<gazebo reference="right_wheel">
+ 		<mu1>0.8</mu1>
+ 		<mu2>0.7</mu2>
+ 		<kp>500000.0</kp>
+ 		<kd>10000.0</kd>
+ 		<material>Gazebo/Black</material>
+ 	</gazebo>
+
+  <gazebo>
+ 		<plugin name="mobile_d_controller" filename="libgazebo_ros_diff_drive.so">
+ 			<alwaysOn>true</alwaysOn>
+ 			<updateRate>20</updateRate>
+ 			<legacyMode>false</legacyMode>
+ 			<leftJoint>base_to_lw</leftJoint>
+ 			<rightJoint>base_to_rw</rightJoint>
+ 			<wheelSeparation>0.326</wheelSeparation>
+ 			<wheelDiameter>0.10076</wheelDiameter>
+ 			<wheelTorque>20</wheelTorque>
+ 			<wheelAcceleration>1</wheelAcceleration>
+ 			<commandTopic>cmd_vel</commandTopic>
+ 			<odometryTopic>odom</odometryTopic>
+ 			<odometryFrame>odom</odometryFrame>
+ 			<odometrySource>world</odometrySource>
+ 			<publishOdomTF>true</publishOdomTF>
+ 			<publishWheelJointState>true</publishWheelJointState>
+ 			<publishWheelTF>false</publishWheelTF>
+ 			<publishTf>true</publishTf>
+ 			<robotBaseFrame>base_link</robotBaseFrame>
+ 			<rosDebugLevel>na</rosDebugLevel>
+ 		</plugin>
+ 	</gazebo>
+
+ 	<gazebo reference="cam">
+    <sensor type="camera" name="camera">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>400</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.04</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>camera</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>cam</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
 </robot>
