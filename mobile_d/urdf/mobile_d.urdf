@@ -4,10 +4,10 @@
     name="base_link">
     <inertial>
       <origin
-        xyz="-0.0601883771663723 0.0676163347450387 5.42028654063717E-18"
+        xyz="-0.060188 0.067616 4.2907E-18"
         rpy="0 0 0" />
       <mass
-        value="40.5091303517493" />
+        value="40.509" />
       <inertia
         ixx="0"
         ixy="0"
@@ -27,7 +27,7 @@
       <material
         name="">
         <color
-          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+          rgba="0.89804 0.91765 0.92941 1" />
       </material>
     </visual>
     <collision>
@@ -44,7 +44,7 @@
     name="wheel_connector">
     <inertial>
       <origin
-        xyz="-4.1807E-12 0.0017703 -0.00028056"
+        xyz="2.6171E-16 0.0017703 -0.00028056"
         rpy="0 0 0" />
       <mass
         value="0.34814" />
@@ -84,8 +84,8 @@
     name="base_to_connector"
     type="fixed">
     <origin
-      xyz="0.073955 0 -0.013"
-      rpy="1.5708 -6.123E-17 -1.5708" />
+      xyz="0.076045 0 -0.013"
+      rpy="1.5708 6.123E-17 1.5708" />
     <parent
       link="base_link" />
     <child
@@ -97,7 +97,7 @@
     name="left_wheel">
     <inertial>
       <origin
-        xyz="-0.015139 6.245E-16 5.6725E-16"
+        xyz="-0.015139 1.2143E-17 5.8287E-16"
         rpy="0 0 0" />
       <mass
         value="0.28504" />
@@ -137,14 +137,14 @@
     name="base_to_lw"
     type="continuous">
     <origin
-      xyz="0.073955 -0.148 -0.013"
-      rpy="3.1416 6.123E-17 1.5708" />
+      xyz="0.076045 -0.148 -0.013"
+      rpy="1.5708 6.123E-17 1.5708" />
     <parent
       link="base_link" />
     <child
       link="left_wheel" />
     <axis
-      xyz="1 0 0" />
+      xyz="-1 0 0" />
     <dynamics
       friction="0.8" />
   </joint>
@@ -152,7 +152,7 @@
     name="right_wheel">
     <inertial>
       <origin
-        xyz="0.015139 -4.1633E-17 1.7347E-18"
+        xyz="0.015139 1.3878E-17 -5.8287E-16"
         rpy="0 0 0" />
       <mass
         value="0.28504" />
@@ -192,14 +192,14 @@
     name="base_to_rw"
     type="continuous">
     <origin
-      xyz="0.073955 0.148 -0.013"
-      rpy="3.1416 6.123E-17 1.5708" />
+      xyz="0.076045 0.148 -0.013"
+      rpy="1.5708 6.123E-17 1.5708" />
     <parent
       link="base_link" />
     <child
       link="right_wheel" />
     <axis
-      xyz="1 0 0" />
+      xyz="-1 0 0" />
     <dynamics
       friction="0.8" />
   </joint>
@@ -207,7 +207,7 @@
     name="caster">
     <inertial>
       <origin
-        xyz="0 0.023595 0"
+        xyz="0 0.023595 -2.4187E-16"
         rpy="0 0 0" />
       <mass
         value="0.52433" />
@@ -248,7 +248,7 @@
     type="fixed">
     <origin
       xyz="-0.185 0 0"
-      rpy="-1.5708 -3.5431E-18 -1.0846" />
+      rpy="-1.5708 0 0" />
     <parent
       link="base_link" />
     <child
@@ -257,10 +257,63 @@
       xyz="0 -1 0" />
   </joint>
   <link
+    name="lidar">
+    <inertial>
+      <origin
+        xyz="0.16544 0.0375 0.15"
+        rpy="0 0 0" />
+      <mass
+        value="0.43971" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/lidar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/lidar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_lidar"
+    type="fixed">
+    <origin
+      xyz="-0.025 0.15 0.05"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
     name="cam">
     <inertial>
       <origin
-        xyz="0.0025 -2.7756E-17 -1.6456E-18"
+        xyz="0.0025 -2.7756E-17 -1.534E-19"
         rpy="0 0 0" />
       <mass
         value="0.0023856" />
@@ -308,59 +361,6 @@
       link="cam" />
     <axis
       xyz="1 0 0" />
-  </joint>
-  <link
-    name="lidar">
-    <inertial>
-      <origin
-        xyz="0.059043 0.0375 0.0065265"
-        rpy="0 0 0" />
-      <mass
-        value="0.43971" />
-      <inertia
-        ixx="0"
-        ixy="0"
-        ixz="0"
-        iyy="0"
-        iyz="0"
-        izz="0" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mobile_d/meshes/lidar.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="1 1 1 0.4" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mobile_d/meshes/lidar.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="base_to_lidar"
-    type="fixed">
-    <origin
-      xyz="0.081395 -0.0065265 0.125"
-      rpy="-1.5708 0 0" />
-    <parent
-      link="base_link" />
-    <child
-      link="lidar" />
-    <axis
-      xyz="0 0 0" />
   </joint>
 
   <gazebo reference="caster">
