@@ -144,7 +144,7 @@
     <child
       link="left_wheel" />
     <axis
-      xyz="-1 0 0" />
+      xyz="1 0 0" />
     <dynamics
       friction="0.8" />
   </joint>
@@ -199,7 +199,7 @@
     <child
       link="right_wheel" />
     <axis
-      xyz="-1 0 0" />
+      xyz="1 0 0" />
     <dynamics
       friction="0.8" />
   </joint>
@@ -438,8 +438,8 @@
  			<alwaysOn>true</alwaysOn>
  			<updateRate>20</updateRate>
  			<legacyMode>false</legacyMode>
- 			<leftJoint>base_to_lw</leftJoint>
- 			<rightJoint>base_to_rw</rightJoint>
+ 			<leftJoint>base_to_rw</leftJoint>
+ 			<rightJoint>base_to_lw</rightJoint>
  			<wheelSeparation>0.326</wheelSeparation>
  			<wheelDiameter>0.10076</wheelDiameter>
  			<wheelTorque>20</wheelTorque>

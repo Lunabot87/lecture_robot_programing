@@ -2,6 +2,7 @@
 import rospy
 import cv2
 import numpy as np
+import math
 from geometry_msgs.msg import Twist             ## use this message type to move mobile robot
 from sensor_msgs.msg import CompressedImage     ## use this to sub & pub the videodata
 rospy.init_node('cam')
@@ -16,7 +17,7 @@ class Detection:
         self.Color_HSV['GREEN'] = [1, 40, 103, 244, 172, 243]
         self.Color_HSV['BLUE'] = [81, 110, 0, 255, 255, 255]
         self.Color_HSV['VALVE'] = [0, 250, 0, 11, 255, 75]
-        self.Color_HSV['YELLOW'] = [6, 27, 55, 32, 255, 156]
+        self.Color_HSV['YELLOW'] = [30, 68, 0, 255, 255, 255]
         self.Color_HSV['PURPLE'] = [115,79,50,166,115,163]
         return
 
@@ -87,7 +88,7 @@ class Detection:
 
 '''def move(linear,angular):
     twist = Twist()
-    twist.linear.x = linear 
+    twist.linear.x = linear
     twist.linear.z = angular
     pub.publish(twist)'''
 
@@ -95,11 +96,14 @@ def video_processing(ros_data):
     ####<<< Decode Ros_data to the frame >>>####
     np_arr = np.fromstring(ros_data.data, np.uint8)
     image_np = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
-    line_detect = Detection() 
-    ret, l_angle,mid_x = line_detect.line_detection(image_np,'BLUE')
+    subimag = image_np[200:400,0:800]
+    line_detect = Detection()
+    ret1, b_angle,b_mid_x = line_detect.line_detection(subimag,'BLUE')
+    ret2, y_angle,y_mid_x = line_detect.line_detection(subimag,'YELLOW')
     cv2.imshow('image_np',image_np)
+    cv2.imshow('image',subimag)
     cv2.waitKey(1) & 0xFF
-    move(linear,angular)
+    #move(linear,angular)
 
 
 if __name__ == '__main__':
