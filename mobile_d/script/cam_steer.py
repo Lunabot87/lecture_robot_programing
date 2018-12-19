@@ -2,10 +2,15 @@
 import rospy
 import cv2
 import numpy as np
+import math
 from geometry_msgs.msg import Twist             ## use this message type to move mobile robot
 from sensor_msgs.msg import CompressedImage     ## use this to sub & pub the videodata
 rospy.init_node('cam')
-pub = rospy.Publisher('frame',CompressedImage)
+pub = rospy.Publisher('cmd_vel',Twist)
+global angular
+global turn_speed
+angular =0
+turn_speed =0
 
 class Detection:
 
@@ -13,11 +18,8 @@ class Detection:
         self.Color_HSV = {}
         # hsv 3 low , hsv 3 high
         self.Color_HSV['RED'] = [0, 255, 20, 255, 255, 115]
-        self.Color_HSV['GREEN'] = [1, 40, 103, 244, 172, 243]
         self.Color_HSV['BLUE'] = [81, 110, 0, 255, 255, 255]
-        self.Color_HSV['VALVE'] = [0, 250, 0, 11, 255, 75]
         self.Color_HSV['YELLOW'] = [6, 27, 55, 32, 255, 156]
-        self.Color_HSV['PURPLE'] = [115,79,50,166,115,163]
         return
 
     def line_detection(self, frame, color):
@@ -29,8 +31,7 @@ class Detection:
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
         Gmask = cv2.inRange(hsv, lowerBound, upperBound)
         kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
-        opening = cv2.morphologyEx(Gmask, cv2.MORPH_OPEN, kernel)
-        ret, thr = cv2.threshold(opening, 127, 255, 0)
+        ret, thr = cv2.threshold(Gmask, 127, 255, 0)
         _, contours, _ = cv2.findContours(thr, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         p1_x = 0
         p1_y = 0
@@ -85,18 +86,41 @@ class Detection:
         else:  # need to send a serial eventhough there is no yellow
             return 0, 0, 0
 
-'''def move(linear,angular):
+def move(linear,angular):
     twist = Twist()
     twist.linear.x = linear 
-    twist.linear.z = angular
-    pub.publish(twist)'''
+    twist.angular.z = angular
+    pub.publish(twist)
+
+def angular_change(x,angular_v):
+    angular_s=0
+    angular_s2=0
+    middle_x = 400
+    Kp=3
+    Ki=0.001
+    p_val=0
+    i_val=0
+    err_p = (x-middle_x)*1000/middle_x
+    print "err_p",err_p
+    P_val = angular_v-err_p*Kp
+    i_val =i_val-err_p*Ki
+    angular_s = p_val+i_val
+    print "angular_s",angular_s
+    return angular_s
 
 def video_processing(ros_data):
+    global angular
+    global turn_speed
     ####<<< Decode Ros_data to the frame >>>####
     np_arr = np.fromstring(ros_data.data, np.uint8)
     image_np = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+    #subimg = image_np[200:600,0:400]
     line_detect = Detection() 
     ret, l_angle,mid_x = line_detect.line_detection(image_np,'BLUE')
+    print l_angle,angular
+    turn_speed = angular_change(mid_x,angular)
+    linear = -0.3
+    angular = turn_speed
     cv2.imshow('image_np',image_np)
     cv2.waitKey(1) & 0xFF
     move(linear,angular)

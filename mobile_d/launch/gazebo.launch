@@ -1,6 +1,15 @@
 <launch>
   <include
-    file="$(find gazebo_ros)/launch/empty_world.launch" />
+    file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find mobile_d)/world/map.world"/>
+  </include> 
+
+  <rosparam file="$(find mobile_d)/config/controller.yaml" command="load"/>
+
+  <param
+    name="robot_description"
+    textfile="$(find mobile_d)/urdf/mobile_d.urdf" />
+
   <node
     name="tf_footprint_base"
     pkg="tf"
@@ -17,4 +26,13 @@
     pkg="rostopic"
     type="rostopic"
     args="pub /calibrated std_msgs/Bool true" />
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/mobile_d" args="joint_state_controller
+                      joint1_position_controller"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+      <remap from="/joint_states" to="/mobile_d/joint_states" />
+    </node>
+
 </launch>
