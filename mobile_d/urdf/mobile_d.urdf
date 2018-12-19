@@ -417,8 +417,8 @@
     <limit
       lower="0"
       upper="1.2217"
-      effort="0"
-      velocity="0" />
+      effort="300"
+      velocity="1" />
     <dynamics
       friction="0.8" />
   </joint>
@@ -589,16 +589,22 @@
     </sensor>
   </gazebo>
 
+  <gazebo>
+	<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+	<robotNamespace>/mobile_d</robotNamespace>
+	</plugin>
+  </gazebo>
 
 
-	<transmission name="tran1">
-	      <type>transmission_interface/SimpleTransmission</type>
-	      <joint name="base_to_dumper">
-		<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-	      </joint>
-	      <actuator name="motor1">
-		<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-		<mechanicalReduction>1</mechanicalReduction>
-	      </actuator>
-   	</transmission>
+
+<transmission name="tran1">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="base_to_dumper">
+	<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor1">
+	<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+	<mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+</transmission>
 </robot>

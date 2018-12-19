@@ -20,7 +20,11 @@ class Detection:
         self.Color_HSV['RED'] = [0, 255, 20, 255, 255, 115]
         self.Color_HSV['BLUE'] = [81, 110, 0, 255, 255, 255]
         self.Color_HSV['YELLOW'] = [6, 27, 55, 32, 255, 156]
+        self.Color_HSV['BLACK'] = [0, 0, 0, 255, 255, 38]
         return
+
+    def end_line(self,frame,color):
+        
 
     def line_detection(self, frame, color):
 

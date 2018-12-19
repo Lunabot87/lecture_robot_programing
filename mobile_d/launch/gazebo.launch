@@ -15,12 +15,21 @@
     pkg="tf"
     type="static_transform_publisher"
     args="0 0 0 0 0 0 base_link base_footprint 40" />
+
   <node
     name="spawn_model"
     pkg="gazebo_ros"
     type="spawn_model"
-    args="-file $(find mobile_d)/urdf/mobile_d.urdf -urdf -model mobile_d"
+    args="-file $(find mobile_d)/urdf/mobile_d.urdf -urdf -model mobile_d -x -10.47 -y 6.33 -z 0.13 -R 0.0 -P 0.0 -Y -1.5708"
     output="screen" />
+
+  <node
+    name="spawn_model_paduck"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find paduck)/urdf/paduck.urdf -urdf -model paduck -x 0.0 -y -1.0 -z 0.26 -R 0.0 -P 0.0 -Y -1.5708"
+    output="screen" />
+
   <node
     name="fake_joint_calibration"
     pkg="rostopic"
@@ -28,8 +37,7 @@
     args="pub /calibrated std_msgs/Bool true" />
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" ns="/mobile_d" args="joint_state_controller
-                      joint1_position_controller"/>
+    output="screen" ns="/mobile_d" args="joint_state_controller joint1_position_controller"/>
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
       <remap from="/joint_states" to="/mobile_d/joint_states" />
