@@ -254,7 +254,7 @@
     <child
       link="cam" />
     <axis
-      xyz="0 0 1" />
+      xyz="0 1 0" />
   </joint>
   <link
     name="caster">
@@ -363,6 +363,22 @@
       xyz="0 0 0" />
   </joint>
 
+  <link name="vir_cam"/>
+
+  <joint
+    name="vir_to_cam"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 -0.7805 -1.5708" />
+    <parent
+      link="cam" />
+    <child
+      link="vir_cam" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
   <gazebo reference="caster">
  		<mu1>0.2</mu1>
  		<mu2>0.1</mu2>
@@ -424,7 +440,7 @@
  		</plugin>
  	</gazebo>
 
- 	<gazebo reference="cam">
+ 	<gazebo reference="vir_cam">
     <sensor type="camera" name="camera">
       <update_rate>30.0</update_rate>
       <camera name="head">
@@ -453,7 +469,7 @@
         <cameraName>camera</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-        <frameName>cam</frameName>
+        <frameName>vir_cam</frameName>
         <hackBaseline>0.07</hackBaseline>
         <distortionK1>0.0</distortionK1>
         <distortionK2>0.0</distortionK2>
@@ -463,5 +479,4 @@
       </plugin>
     </sensor>
   </gazebo>
-</robot>
 </robot>
