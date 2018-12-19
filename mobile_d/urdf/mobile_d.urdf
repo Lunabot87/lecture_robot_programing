@@ -4,17 +4,17 @@
     name="base_link">
     <inertial>
       <origin
-        xyz="-0.044346 -0.0049941 1.2129E-17"
+        xyz="-0.041978408329553 -0.00314435432855515 -6.13652823331329E-09"
         rpy="0 0 0" />
       <mass
-        value="40.613" />
+        value="41.2800177633281" />
       <inertia
-        ixx="0.38305"
-        ixy="0.033175"
-        ixz="9.0184E-19"
-        iyy="1.0123"
-        iyz="2.1978E-17"
-        izz="0.80083" />
+        ixx="0.389095982099498"
+        ixy="0.0241139578687668"
+        ixz="1.30055721795505E-07"
+        iyy="1.03331914405479"
+        iyz="9.88072236391673E-09"
+        izz="0.827555711497334" />
     </inertial>
     <visual>
       <origin
@@ -27,7 +27,7 @@
       <material
         name="">
         <color
-          rgba="0.89804 0.91765 0.92941 1" />
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
       </material>
     </visual>
     <collision>
@@ -44,16 +44,16 @@
     name="wheel_connector">
     <inertial>
       <origin
-        xyz="0 0.0025045 6.6467E-18"
+        xyz="0 0.0025045 6.6526E-18"
         rpy="0 0 0" />
       <mass
         value="0.3799" />
       <inertia
         ixx="0.0021667"
-        ixy="2.4474E-21"
+        ixy="2.4342E-21"
         ixz="-5.8597E-21"
         iyy="0.002185"
-        iyz="5.0845E-21"
+        iyz="5.3638E-21"
         izz="4.7576E-05" />
     </inertial>
     <visual>
@@ -97,7 +97,7 @@
     name="left_wheel">
     <inertial>
       <origin
-        xyz="0.015139 -1.3878E-17 0"
+        xyz="0.015139 0 0"
         rpy="0 0 0" />
       <mass
         value="0.28504" />
@@ -152,7 +152,7 @@
     name="right_wheel">
     <inertial>
       <origin
-        xyz="-0.015139 -1.3878E-17 0"
+        xyz="-0.015139 0 0"
         rpy="0 0 0" />
       <mass
         value="0.28504" />
@@ -202,6 +202,59 @@
       xyz="1 0 0" />
     <dynamics
       friction="0.8" />
+  </joint>
+  <link
+    name="lidar">
+    <inertial>
+      <origin
+        xyz="0.068952 0.0375 4.6733E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.49665" />
+      <inertia
+        ixx="0.0078332"
+        ixy="-7.2721E-19"
+        ixz="1.8455E-18"
+        iyy="0.010872"
+        iyz="-1.7538E-20"
+        izz="0.0035048" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/lidar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mobile_d/meshes/lidar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_to_lidar"
+    type="fixed">
+    <origin
+      xyz="0.0808 0 -0.0225"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar" />
+    <axis
+      xyz="0 0 0" />
   </joint>
   <link
     name="cam">
@@ -254,7 +307,7 @@
     <child
       link="cam" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 0 1" />
   </joint>
   <link
     name="caster">
@@ -310,20 +363,20 @@
       xyz="0 -1 0" />
   </joint>
   <link
-    name="lidar">
+    name="dumper">
     <inertial>
       <origin
-        xyz="0.068952 0.0375 1.3883E-16"
+        xyz="-0.22368 0.072528 2.033E-06"
         rpy="0 0 0" />
       <mass
-        value="0.49665" />
+        value="15.275" />
       <inertia
-        ixx="0.0078332"
-        ixy="-7.2721E-19"
-        ixz="1.2852E-18"
-        iyy="0.010872"
-        iyz="-1.7538E-20"
-        izz="0.0035048" />
+        ixx="0.21342"
+        ixy="0.040624"
+        ixz="-1.0102E-05"
+        iyy="0.41655"
+        iyz="-7.1999E-07"
+        izz="0.34584" />
     </inertial>
     <visual>
       <origin
@@ -331,7 +384,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://mobile_d/meshes/lidar.STL" />
+          filename="package://mobile_d/meshes/dumper.STL" />
       </geometry>
       <material
         name="">
@@ -345,22 +398,29 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://mobile_d/meshes/lidar.STL" />
+          filename="package://mobile_d/meshes/dumper.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="base_to_lidar"
-    type="fixed">
+    name="base_to_dumper"
+    type="revolute">
     <origin
-      xyz="0.0808 0 -0.0225"
-      rpy="1.5708 0 0" />
+      xyz="-0.18 0 0.0855"
+      rpy="1.5708 0 3.1416" />
     <parent
       link="base_link" />
     <child
-      link="lidar" />
+      link="dumper" />
     <axis
-      xyz="0 0 0" />
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="1.2217"
+      effort="0"
+      velocity="0" />
+    <dynamics
+      friction="0.8" />
   </joint>
 
   <link name="vir_cam"/>
@@ -438,8 +498,8 @@
  			<alwaysOn>true</alwaysOn>
  			<updateRate>20</updateRate>
  			<legacyMode>false</legacyMode>
- 			<leftJoint>base_to_rw</leftJoint>
- 			<rightJoint>base_to_lw</rightJoint>
+ 			<leftJoint>base_to_lw</leftJoint>
+ 			<rightJoint>base_to_rw</rightJoint>
  			<wheelSeparation>0.326</wheelSeparation>
  			<wheelDiameter>0.10076</wheelDiameter>
  			<wheelTorque>20</wheelTorque>
