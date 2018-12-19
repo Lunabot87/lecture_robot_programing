@@ -144,7 +144,7 @@
     <child
       link="left_wheel" />
     <axis
-      xyz="1 0 0" />
+      xyz="-1 0 0" />
     <dynamics
       friction="0.8" />
   </joint>
@@ -199,7 +199,7 @@
     <child
       link="right_wheel" />
     <axis
-      xyz="1 0 0" />
+      xyz="-1 0 0" />
     <dynamics
       friction="0.8" />
   </joint>
@@ -379,6 +379,23 @@
       xyz="0 1 0" />
   </joint>
 
+  <link name="vir_lidar"/>
+
+  <joint
+    name="vir_lidar_to_lidar"
+    type="fixed">
+    <origin
+      xyz="0.10 0.04 0"
+      rpy="1.5708 0 0" />
+    <parent
+      link="lidar" />
+    <child
+      link="vir_lidar" />
+    <axis
+      xyz="0 0 0"
+      rpy="0 0 0" />
+  </joint>
+
   <gazebo reference="caster">
  		<mu1>0.2</mu1>
  		<mu2>0.1</mu2>
@@ -476,6 +493,38 @@
         <distortionK3>0.0</distortionK3>
         <distortionT1>0.0</distortionT1>
         <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="vir_lidar">
+    <sensor type="ray" name="lds_lfcd_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.5708</min_angle>
+            <max_angle>1.5708</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.160</min>
+          <max>3.5</max>
+          <resolution>0.015</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
+        <topicName>scan</topicName>
+        <frameName>vir_lidar</frameName>
+        <update_rate>1800</update_rate>
       </plugin>
     </sensor>
   </gazebo>
