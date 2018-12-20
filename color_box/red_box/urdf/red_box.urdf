@@ -1,0 +1,49 @@
+<robot
+  name="red_box">
+  <link
+    name="red_box">
+    <inertial>
+      <origin
+        xyz="-8.6969E-17 0.10277 -0.018088"
+        rpy="0 0 0" />
+      <mass
+        value="39.55" />
+      <inertia
+        ixx="1.5549"
+        ixy="1.0146E-16"
+        ixz="1.7688E-16"
+        iyy="2.5586"
+        iyz="0.098174"
+        izz="1.6871" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://red_box/meshes/red_box.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://red_box/meshes/red_box.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+<gazebo reference="red_box">
+ 		<kp>1000000.0</kp>
+ 		<kd>100.0</kd>
+ 		<material>Gazebo/Red</material>
+ 	</gazebo>
+</robot>

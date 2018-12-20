@@ -502,7 +502,7 @@
  			<rightJoint>base_to_rw</rightJoint>
  			<wheelSeparation>0.326</wheelSeparation>
  			<wheelDiameter>0.10076</wheelDiameter>
- 			<wheelTorque>20</wheelTorque>
+ 			<wheelTorque>100</wheelTorque>
  			<wheelAcceleration>1</wheelAcceleration>
  			<commandTopic>cmd_vel</commandTopic>
  			<odometryTopic>odom</odometryTopic>

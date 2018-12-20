@@ -24,18 +24,47 @@
     output="screen" />
 
   <node
-    name="spawn_model_paduck"
+    name="spawn_model"
     pkg="gazebo_ros"
     type="spawn_model"
-    args="-file $(find paduck)/urdf/paduck.urdf -urdf -model paduck -x 0.0 -y -1.0 -z 0.26 -R 0.0 -P 0.0 -Y -1.5708"
+    args="-file $(find mobile_d)/urdf/mobile_d.urdf -urdf -model mobile_d -x -11.2 -y 6.33 -z 0.13 -R 0.0 -P 0.0 -Y -1.5708"
+    ns="num2"
     output="screen" />
+
+  <node
+    name="spawn_model_paduck1"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find paduck)/urdf/paduck.urdf -urdf -model paduck1 -x 5 -y 0.308 -z 0.26 -R 0.0 -P 0.0 -Y -0.7805"
+    output="screen" />
+
+  <node
+    name="spawn_model_paduck2"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find paduck)/urdf/paduck.urdf -urdf -model paduck2 -x 0.0 -y -1.0 -z 0.26 -R 0.0 -P 0.0 -Y -1.5708"
+    output="screen" />
+
+  <node
+    name="spawn_model_paduck3"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find paduck)/urdf/paduck.urdf -urdf -model paduck3 -x 7 -y -6 -z 0.26 -R 0.0 -P 0.0 -Y -1.5708"
+    output="screen" />
+
+
+  <node
+    name="pabuck_move"
+    pkg="paduck"
+    type="pabuck_move.py"
+    output="screen"/>
 
 
   <node
     name="spawn_model_con1"
     pkg="gazebo_ros"
     type="spawn_model"
-    args="-file $(find conveyor)/urdf/conveyor.urdf -urdf -model conveyor1 -x -4.3 -y 2.4 -z 0.9 -R 0.0 -P 0.0 -Y 0"
+    args="-file $(find conveyor)/urdf/conveyor.urdf -urdf -model conveyor1 -x -7 -y 2.4 -z 0.9 -R 0.0 -P 0.0 -Y 0"
     output="screen" />
   
 
@@ -43,14 +72,42 @@
     name="spawn_model_con2"
     pkg="gazebo_ros"
     type="spawn_model"
-    args="-file $(find conveyor)/urdf/conveyor.urdf -urdf -model conveyor2 -x -4.3 -y -1.1 -z 0.9 -R 0.0 -P 0.0 -Y 0"
+    args="-file $(find conveyor)/urdf/conveyor.urdf -urdf -model conveyor2 -x -7 -y -1.0 -z 0.9 -R 0.0 -P 0.0 -Y 0"
     output="screen" />
 
   <node
     name="spawn_model_con3"
     pkg="gazebo_ros"
     type="spawn_model"
-    args="-file $(find conveyor)/urdf/conveyor.urdf -urdf -model conveyor3 -x -4.3 -y -4.5 -z 0.9 -R 0.0 -P 0.0 -Y 0"
+    args="-file $(find conveyor)/urdf/conveyor.urdf -urdf -model conveyor3 -x -7 -y -4.35 -z 0.9 -R 0.0 -P 0.0 -Y 0"
+    output="screen" />
+
+  <node
+    name="spawn_model_color_r1"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find red_box)/urdf/red_box.urdf -urdf -model box1 -x 10.9 -y 8.5 -z 0.0 -R 0.0 -P 0.0 -Y 0"
+    output="screen" />
+
+  <node
+    name="spawn_model_color_g1"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find green_box)/urdf/green_box.urdf -urdf -model box2 -x 11.6 -y 8.5 -z 0 -R 0.0 -P 0.0 -Y 0"
+    output="screen" />
+
+  <node
+    name="spawn_model_color_b1"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find blue_box)/urdf/blue_box.urdf -urdf -model box3 -x 10.2 -y 8.5 -z 0.0 -R 0.0 -P 0.0 -Y 0"
+    output="screen" />
+
+  <node
+    name="spawn_model_paper_b1"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find paper_box)/urdf/paper_box.urdf -urdf -model box4 -x -7 -y 2.35 -z 5.2 -R 0.0 -P 0.0 -Y 0"
     output="screen" />
 
   <node

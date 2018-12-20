@@ -10,10 +10,10 @@ def talker():
 
     while not rospy.is_shutdown():
         num = Twist()
-        num.linear.x = 0.1
+        num.linear.x = 0.3
         pub.publish(num)
         rate.sleep()
-        num.linear.x = -0.1
+        num.linear.x = -0.3
         pub.publish(num)
         rate.sleep()
 
