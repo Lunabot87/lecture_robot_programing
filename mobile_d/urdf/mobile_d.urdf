@@ -369,14 +369,14 @@
         xyz="-0.22368 0.072528 2.033E-06"
         rpy="0 0 0" />
       <mass
-        value="15.275" />
+        value="0.015275" />
       <inertia
-        ixx="0.21342"
-        ixy="0.040624"
-        ixz="-1.0102E-05"
-        iyy="0.41655"
-        iyz="-7.1999E-07"
-        izz="0.34584" />
+        ixx="0.00021342"
+        ixy="0.000040624"
+        ixz="-1.0102E-08"
+        iyy="0.00041655"
+        iyz="-7.1999E-10"
+        izz="0.00034584" />
     </inertial>
     <visual>
       <origin
@@ -420,7 +420,7 @@
       effort="300"
       velocity="1" />
     <dynamics
-      friction="0.8" />
+      friction="0.01" />
   </joint>
 
   <link name="vir_cam"/>
@@ -594,7 +594,6 @@
 	<robotNamespace>/mobile_d</robotNamespace>
 	</plugin>
   </gazebo>
-
 
 
 <transmission name="tran1">

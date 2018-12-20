@@ -1,0 +1,43 @@
+<robot
+  name="conveyor">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.86989 -0.022467 -1.4385E-07"
+        rpy="0 0 0" />
+      <mass
+        value="696.03" />
+      <inertia
+        ixx="93.004"
+        ixy="9.4697"
+        ixz="8.9932E-05"
+        iyy="722.77"
+        iyz="7.9152E-06"
+        izz="693.6" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://conveyor/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://conveyor/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

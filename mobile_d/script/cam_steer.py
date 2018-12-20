@@ -23,7 +23,7 @@ class Detection:
         self.Color_HSV['BLACK'] = [0, 0, 0, 255, 255, 38]
         return
 
-    def end_line(self,frame,color):
+    #def end_line(self,frame,color):
         
 
     def line_detection(self, frame, color):
